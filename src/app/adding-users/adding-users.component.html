@@ -1,0 +1,58 @@
+<Header class="header"><div>Angular users task</div> </Header>
+ 
+ <div class="Main">
+  
+    <div class="data">
+         
+         
+       <label for="userLogin">
+      
+        <div>  <span>Login</span></div>  
+        <div>  <input type="text" name="userLogin" id="userLogin" [(ngModel)]="userLogin" placeholder ="Enter Login"></div>  
+       </label>
+
+       <label for="userPassword">
+
+         <div> <span>Password</span></div> 
+            <div> <input type="text" name="userPassword" id="userPassword" [(ngModel)]="userPassword" placeholder ="Enter Password" [type]="show ? 'text' : 'password'" ></div> 
+       </label>
+ 
+ 
+       <label for="userEmail">
+
+         <div> <span>Email</span></div> 
+            <div>  <input type="text" name="userEmail" id="userEmail" [(ngModel)]="userEmail" placeholder ="Enter Email"></div> 
+       </label>
+
+         
+        <button *ngIf="!hide" (click)="addUser()" class="data__addUser">Add user</button>
+        <button *ngIf="hide"(click)="saveEditUser()" class="data__saveUser" >Save edit user</button>
+    </div>
+    <div class="user">
+    <table>
+      <div class="user__shadow"></div>
+   <thead>
+    <th>#</th>
+    <th>Login</th>
+    <th>Password</th>
+    <th>Email</th>
+    <th>Edit</th>
+    <th>Delete</th>
+   </thead>
+   
+   <tbody>
+    <tr *ngFor="let user of users ; let i = index"> 
+    <td>{{ i+1 }}</td>
+    <td>{{ user.Login }}</td>
+    <td>{{  user.Password }}</td>
+    <td>{{  user.Email }}</td>
+    <td><button (click)="editUser(i)" class="user__edit">Edit</button></td>
+    <td><button (click)="deleteUser(i)" class="user__delete">Delete</button></td>
+   </tr>
+   </tbody>
+   
+    </table>
+ 
+    </div>
+ </div>
+ 
